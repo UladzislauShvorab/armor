@@ -1,0 +1,29 @@
+<template>
+  <div class="wrapper" style={backgroundImageStyle}>
+    <div class="state-container">
+      <template if:true={hasBreadcrumbs}>
+        <div class="breadcrumbs">
+          <template if:true={breadcrumb1}>
+            <p>{breadcrumb1}</p>
+            <template if:true={breadcrumb2}>
+              <span>></span>
+            </template>
+          </template>
+          <template if:true={breadcrumb2}>
+            <p>{breadcrumb2}</p>
+            <template if:true={breadcrumb3}>
+              <span>></span>
+            </template>
+          </template>
+          <template if:true={breadcrumb3}>
+            <p>{breadcrumb3}</p>
+          </template>
+        </div>
+      </template>
+      <div class="content">
+        <h1 class="title" style={titleStyle}>{title}</h1>
+        <p class="description" style={descriptionStyle}>{description}</p>
+      </div>
+    </div>
+  </div>
+</template>
