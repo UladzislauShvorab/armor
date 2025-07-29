@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>64.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>Home Banner</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+    <target>lightning__HomePage</target>
+    <target>lightning__AppPage</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+
+      <!-- Breadumbs properties -->
+      <property
+                name="showTheFirstLevelBreadcrumb"
+                type="Boolean"
+                label="Show The First Level Breadcrumb"
+                default="false" />
+      <property
+                name="theFirstLevelBreadcrumbLabel"
+                type="String"
+                label="The First Level Breadcrumb Label" />
+      <property
+                name="theFirstLevelBreadcrumbLink"
+                type="String"
+                label="The First Level Breadcrumb Link" />
+
+      <property
+                name="showTheSecondLevelBreadcrumb"
+                type="Boolean"
+                label="Show The Second Level Breadcrumb"
+                default="false" />
+      <property
+                name="theSecondLevelBreadcrumbLabel"
+                type="String"
+                label="The Second Level Breadcrumb Label" />
+      <property
+                name="theSecondLevelBreadcrumbLink"
+                type="String"
+                label="The Second Level Breadcrumb Link" />
+
+      <property
+                name="showTheThirdLevelBreadcrumb"
+                type="Boolean"
+                label="Show The Third Level Breadcrumb"
+                default="false" />
+      <property
+                name="theThirdLevelBreadcrumbLabel"
+                type="String"
+                label="The Third Level Breadcrumb Label" />
+      <property
+                name="theThirdLevelBreadcrumbLink"
+                type="String"
+                label="The Third Level Breadcrumb Link" />
+
+      <!-- Image properties -->
+      <property
+                name="showBackgroundImage"
+                type="Boolean"
+                label="Show 'Background' Image"
+                default="false" />
+      <property
+                name="backgroundImage"
+                type="ContentReference"
+                label="'Background' Image"
+                filter="cms_image" />
+      <property
+                name="backgroundColor"
+                type="Color"
+                label="'Background' Color"
+                default="rgb(255, 255, 255)" />
+
+      <!-- Textual properties -->
+      <property
+                name="showTitle"
+                type="Boolean"
+                label="Show Title"
+                default="false" />
+      <property name="title" type="String" label="Title" />
+      <property
+                name="titleColor"
+                type="Color"
+                label="Title Color"
+                default="rgb(255, 255, 255)" />
+      <property name="maxTitleWidth" type="String" label="Max Title Width" />
+
+      <property
+                name="showDescription"
+                type="Boolean"
+                label="Show Description"
+                default="false" />
+      <property name="description" type="String" label="Description" />
+      <property
+                name="descriptionColor"
+                type="Color"
+                label="Description Color"
+                default="rgb(255, 255, 255)" />
+      <property
+                name="maxDescriptionWidth"
+                type="String"
+                label="max Description Width" />
+      <!--  -->
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

@@ -1,0 +1,54 @@
+<template>
+    <div class="home-banner__wrapper" style={backgroundImageStyle}>
+        <div class="home-bunner_inner">
+            <template lwc:if={hasBreadcrumbs}>
+                <div class="home-bunner_breadcrumbs">
+                    <template lwc:if={showTheFirstLevelBreadcrumb}>
+                        <a
+                            href={theFirstLevelBreadcrumbLink}
+                            class="home-bunner_breadcrumb">
+                            {theFirstLevelBreadcrumbLabel}
+                        </a>
+                    </template>
+
+                    <template lwc:if={showTheSecondLevelBreadcrumb}>
+                        <template lwc:if={showTheSecondLevelBreadcrumb}>
+                            <span class="separator">&gt;</span>
+                        </template>
+                        <a
+                            href={theSescondLevelBreadcrumbLink}
+                            class="home-bunner_breadcrumb">
+                            {theSecondLevelBreadcrumbLabel}
+                        </a>
+                    </template>
+
+                    <template lwc:if={showTheThirdLevelBreadcrumb}>
+                        <template lwc:if={showTheThirdLevelBreadcrumb}>
+                            <span class="separator">&gt;</span>
+                        </template>
+                        <a
+                            href={theThirdLevelBreadcrumbLink}
+                            class="home-bunner_breadcrumb">
+                            {theThirdLevelBreadcrumbLabel}
+                        </a>
+                    </template>
+                </div>
+            </template>
+
+            <div class="home-bunner_content">
+                <template lwc:if={showTitle}>
+                    <h1 class="home-bunner_content-title" style={titleStyle}>
+                        {title}
+                    </h1>
+                </template>
+                <template lwc:if={showDescription}>
+                    <p
+                        class="home-bunner_content-description"
+                        style={descriptionStyle}>
+                        {description}
+                    </p>
+                </template>
+            </div>
+        </div>
+    </div>
+</template>
