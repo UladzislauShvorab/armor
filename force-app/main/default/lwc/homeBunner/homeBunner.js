@@ -1,15 +1,22 @@
-import { LightningElement, api, track } from "lwc";
+import { LightningElement, api, track, wire } from "lwc";
 
+import { getRecord, getFieldValue } from "lightning/uiRecordApi";
+import Id from "@salesforce/user/Id";
+import FIRSTNAME_FIELD from "@salesforce/schema/User.FirstName";
 import communityBasePath from "@salesforce/community/basePath";
+
+import { addCustomCssStyles } from "c/utils";
 
 export default class HomeBanner extends LightningElement {
     @api recordId = null;
     @api firstName = null;
 
+    userId = Id;
+
     @api showBreadcrumbs = false;
 
     @api showTheFirstLevelBreadcrumb = false;
-    @api theFirstLevelBreadcrumbLabel;
+    @api theFirstLevelBreadcrumbLabel = null;
     @api theFirstBreadcrumbLinkOpenLinkInNewTab;
     @api theFirstLevelBreadcrumbLink;
 
@@ -42,14 +49,31 @@ export default class HomeBanner extends LightningElement {
     @track isFirstRender = true;
     @track customCssContainer = "custom-css-container";
 
+    @wire(getRecord, { recordId: "$userId", fields: [FIRSTNAME_FIELD] })
+    userRecord;
+
+    get effectiveFirstName() {
+        if (this.firstName) {
+            return this.firstName;
+        }
+
+        if (this.userRecord.data) {
+            return getFieldValue(this.userRecord.data, FIRSTNAME_FIELD);
+        }
+
+        return null;
+    }
+
+    connectedCallback() {
+        console.log("UserId:", this.userId);
+        console.log("API firstName:", this.firstName);
+    }
+
     renderedCallback() {
         if (this.isFirstRender) {
             this.isFirstRender = false;
-            this.addCustomCssStyles();
         }
-    }
 
-    addCustomCssStyles() {
         let styleText = ``;
 
         if (this.showBreadcrumbs) {
@@ -135,73 +159,58 @@ export default class HomeBanner extends LightningElement {
             }`;
         }
 
-        let styleElement = document.createElement("style");
-        styleElement.innerText = styleText;
-
-        let parenNode = this.template.querySelector(
-            `.${this.customCssContainer}`
-        );
-        if (parenNode) {
-            while (parenNode.firstChild) {
-                parenNode.removeChild(parenNode.firstChild);
-            }
-            parenNode.appendChild(styleElement);
-        }
+        addCustomCssStyles(this, this.customCssContainer, styleText);
     }
+
+    // addCustomCssStyles() {
+    //     let styleElement = document.createElement("style");
+    //     styleElement.innerText = styleText;
+
+    //     let parenNode = this.template.querySelector(
+    //         `.${this.customCssContainer}`
+    //     );
+    //     if (parenNode) {
+    //         while (parenNode.firstChild) {
+    //             parenNode.removeChild(parenNode.firstChild);
+    //         }
+    //         parenNode.appendChild(styleElement);
+    //     }
+    // }
 
     get getTitle() {
+        const firstName = this.effectiveFirstName;
+
         if (!this.title) return null;
-
         if (!this.title.includes("{0}")) return this.title;
-
-        if (!this.firstName || this.firstName === "")
-            return this.title.replace("{0}", "unknown");
-        return this.title.replace("{0}", this.firstName);
+        return this.title.replace("{0}", firstName || "Guest");
     }
 
-    get visibleBreadcrumbs() {
-        const breadcrumbs = [];
+    get breadcrumbs() {
+        const levelsMeta = ["First", "Second", "Third"];
+        const crumbs = [];
 
-        if (
-            this.showTheFirstLevelBreadcrumb &&
-            this.theFirstLevelBreadcrumbLabel
-        ) {
-            breadcrumbs.push({
-                id: "first",
-                label: this.theFirstLevelBreadcrumbLabel,
-                link: this.theFirstLevelBreadcrumbLink,
-                target: this.isTheFirstBreadcrumbLinkExternal,
-                showArrow: false
-            });
-        }
+        levelsMeta.forEach((levelName) => {
+            const showKey = `showThe${levelName}LevelBreadcrumb`;
+            const labelKey = `the${levelName}LevelBreadcrumbLabel`;
+            const linkKey = `the${levelName}LevelBreadcrumbLink`;
+            const targetKey = `isThe${levelName}BreadcrumbLinkExternal`;
 
-        if (
-            this.showTheSecondLevelBreadcrumb &&
-            this.theSecondLevelBreadcrumbLabel
-        ) {
-            breadcrumbs.push({
-                id: "second",
-                label: this.theSecondLevelBreadcrumbLabel,
-                link: this.theSecondLevelBreadcrumbLink,
-                target: this.isTheSecondLevelBreadcrumbLinkExternal,
-                showArrow: breadcrumbs.length > 0
-            });
-        }
+            if (this[showKey] && this[labelKey]) {
+                crumbs.push({
+                    id: this._generateRandomId(),
+                    label: this[labelKey],
+                    link: this[linkKey],
+                    target: this[targetKey],
+                    showArrow: crumbs.length > 0
+                });
+            }
+        });
 
-        if (
-            this.showTheThirdLevelBreadcrumb &&
-            this.theThirdLevelBreadcrumbLabel
-        ) {
-            breadcrumbs.push({
-                id: "third",
-                label: this.theThirdLevelBreadcrumbLabel,
-                link: this.theThirdLevelBreadcrumbLink,
-                target: this.isTheThirdLevelBreadcrumbLinkExternal,
-                showArrow: breadcrumbs.length > 0
-            });
-        }
+        return crumbs;
+    }
 
-        return breadcrumbs;
+    _generateRandomId() {
+        return Math.random().toString(16).slice(2);
     }
 
     get backgroundImageUrl() {
@@ -212,6 +221,11 @@ export default class HomeBanner extends LightningElement {
     get tabletBackgroundImageUrl() {
         if (!this.tabletBackgroundImage) return null;
         return `${communityBasePath}/sfsites/c/cms/delivery/media/${this.tabletBackgroundImage}`;
+    }
+
+    get mobileBackgroundImageUrl() {
+        if (!this.mobileBackgroundImage) return null;
+        return `${communityBasePath}/sfsites/c/cms/delivery/media/${this.mobileBackgroundImage}`;
     }
 
     get isShowBackgroundImage() {
