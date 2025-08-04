@@ -5,7 +5,7 @@ import Id from "@salesforce/user/Id";
 import FIRSTNAME_FIELD from "@salesforce/schema/User.FirstName";
 import communityBasePath from "@salesforce/community/basePath";
 
-import { addCustomCssStyles } from "c/utils";
+import { addCustomCssStyles, generateRandomId } from "c/utils";
 
 export default class HomeBanner extends LightningElement {
     @api recordId = null;
@@ -72,8 +72,11 @@ export default class HomeBanner extends LightningElement {
     renderedCallback() {
         if (this.isFirstRender) {
             this.isFirstRender = false;
+            this.addCustomCssStyles();
         }
+    }
 
+    addCustomCssStyles() {
         let styleText = ``;
 
         if (this.showBreadcrumbs) {
@@ -197,7 +200,7 @@ export default class HomeBanner extends LightningElement {
 
             if (this[showKey] && this[labelKey]) {
                 crumbs.push({
-                    id: this._generateRandomId(),
+                    id: generateRandomId(),
                     label: this[labelKey],
                     link: this[linkKey],
                     target: this[targetKey],
@@ -207,10 +210,6 @@ export default class HomeBanner extends LightningElement {
         });
 
         return crumbs;
-    }
-
-    _generateRandomId() {
-        return Math.random().toString(16).slice(2);
     }
 
     get backgroundImageUrl() {

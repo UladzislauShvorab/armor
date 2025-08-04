@@ -1,9 +1,10 @@
 // lwc/utils/utils.js
+
 /**
- * Инжектит переданный CSS в <style> внутри указанного контейнера компонента
+ * Inject santed CSS in <style> inside the specified container
  * @param {LightningElement} cmp         – this of component
- * @param {string} customCssContainer    – класс контейнера, куда вставить <style>
- * @param {string} styleText             – текст CSS для вставки
+ * @param {string} customCssContainer    – class-container for <style>
+ * @param {string} styleText             – CSS Text styles
  */
 export function addCustomCssStyles(cmp, customCssContainer, styleText) {
     const styleElement = document.createElement("style");
@@ -16,4 +17,12 @@ export function addCustomCssStyles(cmp, customCssContainer, styleText) {
         }
         container.appendChild(styleElement);
     }
+}
+
+/**
+ * Generate random unique id
+ * @returns {string}
+ */
+export function generateRandomId() {
+    return Math.random().toString(16).slice(2);
 }
