@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>64.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Home Tiles</masterLabel>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+        <target>lightning__HomePage</target>
+        <target>lightning__AppPage</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+
+            <property
+                name="tilesTitleColor"
+                type="Color"
+                label="Tiles Title Color"
+                default="rgb(0, 0, 0)" />
+
+            <property
+                name="tilesDescriptionColor"
+                type="Color"
+                label="Tiles Description Color"
+                default="rgb(0, 0, 0)" />
+
+            <!-- Tile 1 -->
+            <property
+                name="showTile1"
+                type="Boolean"
+                label="Show Tile 1"
+                default="true" />
+            <property
+                name="showTile1Image"
+                type="Boolean"
+                label="Show Tile 1 Image"
+                default="false" />
+            <property
+                name="tile1Image"
+                type="ContentReference"
+                label="Tile 1 Image"
+                filter="cms_image" />
+            <property
+                name="showTile1Title"
+                type="Boolean"
+                label="Show Tile 1 Title"
+                default="true" />
+            <property
+                name="tile1Title"
+                type="String"
+                label="Tile 1 Title"
+                default="Product Configurator" />
+            <property
+                name="showTile1Description"
+                type="Boolean"
+                label="Show Tile 1 Description"
+                default="true" />
+            <property
+                name="tile1Description"
+                type="String"
+                label="Tile 1 Description"
+                default="Select your product, follow the step-by-step process and generate a quote for your customized product." />
+            <property
+                name="tile1Link"
+                type="String"
+                label="Tile 1 Link"
+                default='' />
+            <property
+                name="tile1LinkOpenInNewTab"
+                type="Boolean"
+                label="Open The Tile 1 Link In The New Tab"
+                default="false" />
+
+            <!-- Tile 2 -->
+            <property
+                name="showTile2"
+                type="Boolean"
+                label="Show Tile 2"
+                default="true" />
+            <property
+                name="showTile2Image"
+                type="Boolean"
+                label="Show Tile 2 Image"
+                default="false" />
+            <property
+                name="tile2Image"
+                type="ContentReference"
+                label="Tile 2 Image"
+                filter="cms_image" />
+            <property
+                name="showTile2Title"
+                type="Boolean"
+                label="Show Tile 2 Title"
+                default="true" />
+            <property
+                name="tile2Title"
+                type="String"
+                label="Tile 2 Title"
+                default="Knowledge Center" />
+            <property
+                name="showTile2Description"
+                type="Boolean"
+                label="Show Tile 2 Description"
+                default="true" />
+            <property
+                name="tile2Description"
+                type="String"
+                label="Tile 2 Description"
+                default="Direction on your most asked questions." />
+            <property
+                name="tile2Link"
+                type="String"
+                label="Tile 2 Link"
+                default='' />
+            <property
+                name="tile2LinkOpenInNewTab"
+                type="Boolean"
+                label="Open The Tile 1 Link In The New Tab"
+                default="false" />
+
+            <!-- Tile 3 -->
+            <property
+                name="showTile3"
+                type="Boolean"
+                label="Show Tile 3"
+                default="true" />
+            <property
+                name="showTile3Image"
+                type="Boolean"
+                label="Show Tile 3 Image"
+                default="false" />
+            <property
+                name="tile3Image"
+                type="ContentReference"
+                label="Tile 3 Image"
+                filter="cms_image" />
+            <property
+                name="showTile3Title"
+                type="Boolean"
+                label="Show Tile 3 Title"
+                default="true" />
+            <property
+                name="tile3Title"
+                type="String"
+                label="Tile 3 Title"
+                default="Software" />
+            <property
+                name="showTile3Description"
+                type="Boolean"
+                label="Show Tile 3 Description"
+                default="true" />
+            <property
+                name="tile3Description"
+                type="String"
+                label="Tile 3 Description"
+                default="Software and firmware for configuring and programming your products." />
+            <property
+                name="tile3Link"
+                type="String"
+                label="Tile 3 Link"
+                default='' />
+            <property
+                name="tile3LinkOpenInNewTab"
+                type="Boolean"
+                label="Open The Tile 1 Link In The New Tab"
+                default="false" />
+
+            <!-- Tile 4 -->
+            <property
+                name="showTile4"
+                type="Boolean"
+                label="Show Tile 4"
+                default="true" />
+            <property
+                name="showTile4Image"
+                type="Boolean"
+                label="Show Tile 4 Image"
+                default="false" />
+            <property
+                name="tile4Image"
+                type="ContentReference"
+                label="Tile 4 Image"
+                filter="cms_image" />
+            <property
+                name="showTile4Title"
+                type="Boolean"
+                label="Show Tile 4 Title"
+                default="true" />
+            <property
+                name="tile4Title"
+                type="String"
+                label="Tile 4 Title"
+                default="Marketing Resources" />
+            <property
+                name="showTile4Description"
+                type="Boolean"
+                label="Show Tile 4 Description"
+                default="true" />
+            <property
+                name="tile4Description"
+                type="String"
+                label="Tile 4 Description"
+                default="Logos, product images, product information, and customer photo sharing." />
+            <property
+                name="tile4Link"
+                type="String"
+                label="Tile 4 Link"
+                default='' />
+            <property
+                name="tile4LinkOpenInNewTab"
+                type="Boolean"
+                label="Open The Tile 1 Link In The New Tab"
+                default="false" />
+
+            <!-- Tile 5 -->
+            <property
+                name="showTile5"
+                type="Boolean"
+                label="Show Tile 5"
+                default="true" />
+            <property
+                name="showTile5Image"
+                type="Boolean"
+                label="Show Tile 5 Image"
+                default="false" />
+            <property
+                name="tile5Image"
+                type="ContentReference"
+                label="Tile 5 Image"
+                filter="cms_image" />
+            <property
+                name="showTile5Title"
+                type="Boolean"
+                label="Show Tile 5 Title"
+                default="true" />
+            <property
+                name="tile5Title"
+                type="String"
+                label="Tile 5 Title"
+                default="Innovation at work" />
+            <property
+                name="showTile5Description"
+                type="Boolean"
+                label="Show Tile 5 Description"
+                default="true" />
+            <property
+                name="tile5Description"
+                type="String"
+                label="Tile 5 Description"
+                default="Research articles proving the science." />
+            <property
+                name="tile5Link"
+                type="String"
+                label="Tile 5 Link"
+                default='' />
+            <property
+                name="tile5LinkOpenInNewTab"
+                type="Boolean"
+                label="Open The Tile 1 Link In The New Tab"
+                default="false" />
+
+            <!-- Tile 6 -->
+            <property
+                name="showTile6"
+                type="Boolean"
+                label="Show Tile 6"
+                default="true" />
+            <property
+                name="showTile6Image"
+                type="Boolean"
+                label="Show Tile 6 Image"
+                default="false" />
+            <property
+                name="tile6Image"
+                type="ContentReference"
+                label="Tile 6 Image"
+                filter="cms_image" />
+            <property
+                name="showTile6Title"
+                type="Boolean"
+                label="Show Tile 6 Title"
+                default="true" />
+            <property
+                name="tile6Title"
+                type="String"
+                label="Tile 6 Title"
+                default="Account Information" />
+            <property
+                name="showTile6Description"
+                type="Boolean"
+                label="Show Tile 6 Description"
+                default="true" />
+            <property
+                name="tile6Description"
+                type="String"
+                label="Tile 6 Description"
+                default="Select your product, follow the step-by-step process and generate a quote for your customized product." />
+            <property
+                name="tile6Link"
+                type="String"
+                label="Tile 6 Link"
+                default='' />
+            <property
+                name="tile6LinkOpenInNewTab"
+                type="Boolean"
+                label="Open The Tile 1 Link In The New Tab"
+                default="false" />
+
+        </targetConfig>
+
+    </targetConfigs>
+</LightningComponentBundle>

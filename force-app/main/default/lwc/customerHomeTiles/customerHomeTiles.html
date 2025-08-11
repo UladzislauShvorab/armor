@@ -1,0 +1,43 @@
+<template>
+    <div lwc:dom="manual" class={customCssContainer}></div>
+    <div class="home-tiles__wrapper">
+        <div class="home-tiles__inner">
+            <template for:each={tiles} for:item="tile">
+                <template lwc:if={tile.show}>
+                    <a
+                        key={tile.id}
+                        class="home-tiles__item"
+                        target={tile.target}
+                        href={tile.link}>
+                        <div class="home-tiles__item-image">
+                            <template lwc:if={tile.showImage}>
+                                <template lwc:if={tile.imgUrl}>
+                                    <img src={tile.imgUrl} alt={tile.title} />
+                                </template>
+                            </template>
+                            <template lwc:elseif={tile.showImage}>
+                                <img
+                                    class="home-tiles__item-image-default"
+                                    src={noImagePictireSrc} />
+                            </template>
+                        </div>
+                        <template lwc:if={isShowTileTitle}>
+                            <div
+                                class="home-tiles__item-title"
+                                title={tile.title}>
+                                {tile.title}
+                            </div>
+                        </template>
+                        <template lwc:if={isShowTileDescription}>
+                            <div
+                                class="home-tiles__item-description"
+                                title={tile.description}>
+                                {tile.description}
+                            </div>
+                        </template>
+                    </a>
+                </template>
+            </template>
+        </div>
+    </div>
+</template>
