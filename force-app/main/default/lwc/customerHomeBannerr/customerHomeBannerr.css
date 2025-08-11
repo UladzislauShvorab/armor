@@ -1,0 +1,173 @@
+:host {
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+.home-banner__wrapper {
+    padding: 1.25rem 2.5rem;
+    min-height: 18.75rem;
+}
+
+.home-banner__inner {
+    max-width: var(--dxp-s-section-columns-max-width);
+    width: 100%;
+    margin: 0 auto;
+    height: 100%;
+    gap: 3.875rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.home-banner__breadcrumbs {
+    visibility: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: rgb(255, 255, 255);
+}
+
+.home-banner__breadcrumbs a:first-of-type {
+    padding-left: 0;
+}
+
+.home-banner__breadcrumbs > *:not(:first-child) {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.home-banner__breadcrumbs {
+    visibility: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: rgb(255, 255, 255);
+    gap: 0;
+}
+
+.home-banner__breadcrumb-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.home-banner__breadcrumb-item:first-child .home-banner__breadcrumb {
+    padding-left: 0;
+}
+
+.home-banner__arrow-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.home-banner__breadcrumb {
+    color: rgb(255, 255, 255) !important;
+    padding: 0 0.75rem;
+    font-weight: 500;
+    font-size: 0.875rem;
+    text-decoration: none !important;
+}
+
+.home-banner__breadcrumb[href]:hover {
+    cursor: pointer;
+}
+
+.home-banner__breadcrumb[href]:not([href=""]):hover {
+    cursor: pointer;
+}
+
+.home-banner__breadcrumb[href=""] {
+    cursor: default;
+    pointer-events: none;
+}
+
+.home-banner__breadcrumbs .home-banner__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.home-banner__content .home-banner__content-title,
+.home-banner__content .home-banner__content-description {
+    text-align: left;
+
+    color: rgb(255, 255, 255);
+    max-width: 33.25rem;
+}
+
+.home-banner__content .home-banner__content-title {
+    font-family: "Forza", sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 2.25rem;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+
+    word-break: break-word;
+}
+
+.home-banner__content .home-banner__content-description {
+    font-family: Helvetica, sans-serif;
+    font-size: 1rem;
+    font-weight: normal;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+
+    word-break: break-word;
+}
+
+.home-banner__content-title + .home-banner__content-description {
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 1023.98px) {
+    .home-banner__wrapper {
+        padding: 1.25rem 1.5rem;
+    }
+    .home-banner__breadcrumb {
+        font-size: 0.75rem;
+        padding: 0 0.5rem;
+    }
+    .home-banner__content .home-banner__content-title {
+        font-size: 1.75rem;
+    }
+
+    .home-banner__content .home-banner__content-description {
+        font-size: 0.875rem;
+    }
+
+    .home-banner__content-title + .home-banner__content-description {
+        margin-top: 0.25rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .home-banner__wrapper {
+        padding: 1rem;
+        min-height: 250px;
+    }
+    .home-banner__breadcrumbs {
+        flex-wrap: wrap;
+    }
+    .home-banner__breadcrumb {
+        font-size: 0.75rem;
+        padding: 0 0.5rem;
+    }
+    .home-banner__content .home-banner__content-title {
+        font-size: 1.5rem;
+    }
+
+    .home-banner__content .home-banner__content-description {
+        font-size: 0.75rem;
+    }
+
+    .home-banner__content-title + .home-banner__content-description {
+        margin-top: 0rem;
+    }
+}
