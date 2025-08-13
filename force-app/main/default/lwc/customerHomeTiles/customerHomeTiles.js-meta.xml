@@ -11,20 +11,18 @@
     </targets>
     <targetConfigs>
         <targetConfig targets="lightningCommunity__Default">
-
             <property
                 name="tilesTitleColor"
                 type="Color"
                 label="Tiles Title Color"
                 default="rgb(0, 0, 0)" />
-
             <property
                 name="tilesDescriptionColor"
                 type="Color"
                 label="Tiles Description Color"
                 default="rgb(0, 0, 0)" />
 
-            <!-- Tile 1 -->
+            <!-- TILE 1 -->
             <property
                 name="showTile1"
                 type="Boolean"
@@ -71,7 +69,7 @@
                 label="Open The Tile 1 Link In The New Tab"
                 default="false" />
 
-            <!-- Tile 2 -->
+            <!-- TILE 2 -->
             <property
                 name="showTile2"
                 type="Boolean"
@@ -118,7 +116,7 @@
                 label="Open The Tile 1 Link In The New Tab"
                 default="false" />
 
-            <!-- Tile 3 -->
+            <!-- TILE 3 -->
             <property
                 name="showTile3"
                 type="Boolean"
@@ -165,7 +163,7 @@
                 label="Open The Tile 1 Link In The New Tab"
                 default="false" />
 
-            <!-- Tile 4 -->
+            <!-- TILE 4 -->
             <property
                 name="showTile4"
                 type="Boolean"
@@ -212,7 +210,7 @@
                 label="Open The Tile 1 Link In The New Tab"
                 default="false" />
 
-            <!-- Tile 5 -->
+            <!-- TILE 5 -->
             <property
                 name="showTile5"
                 type="Boolean"
@@ -259,7 +257,7 @@
                 label="Open The Tile 1 Link In The New Tab"
                 default="false" />
 
-            <!-- Tile 6 -->
+            <!-- TILE 6 -->
             <property
                 name="showTile6"
                 type="Boolean"
@@ -305,8 +303,6 @@
                 type="Boolean"
                 label="Open The Tile 1 Link In The New Tab"
                 default="false" />
-
         </targetConfig>
-
     </targetConfigs>
 </LightningComponentBundle>

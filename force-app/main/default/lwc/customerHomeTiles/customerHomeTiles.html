@@ -11,26 +11,24 @@
                         href={tile.link}>
                         <div class="home-tiles__item-image">
                             <template lwc:if={tile.showImage}>
-                                <template lwc:if={tile.imgUrl}>
-                                    <img src={tile.imgUrl} alt={tile.title} />
-                                </template>
+                                <img src={tile.imgUrl} alt={tile.title} />
                             </template>
-                            <template lwc:elseif={tile.showImage}>
+                            <template lwc:else>
                                 <img
                                     class="home-tiles__item-image-default"
-                                    src={noImagePictireSrc} />
+                                    src={getNoImage} />
                             </template>
                         </div>
-                        <template lwc:if={isShowTileTitle}>
+                        <template lwc:if={tile.showTitle}>
                             <div
-                                class="home-tiles__item-title"
+                                class="dxp-text-heading-medium home-tiles__item-title custom-truncate custom-truncate-line-2"
                                 title={tile.title}>
                                 {tile.title}
                             </div>
                         </template>
-                        <template lwc:if={isShowTileDescription}>
+                        <template lwc:if={tile.showDescription}>
                             <div
-                                class="home-tiles__item-description"
+                                class="dxp-body home-tiles__item-description custom-truncate custom-truncate-line-2"
                                 title={tile.description}>
                                 {tile.description}
                             </div>

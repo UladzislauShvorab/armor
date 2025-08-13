@@ -3,15 +3,36 @@
     min-height: 5rem;
 }
 
+@media (max-width: 1023.98px) {
+    .home-tiles__wrapper {
+        padding: 1.25rem 0;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .home-tiles__wrapper {
+        padding: 1rem 0;
+    }
+}
+
 .home-tiles__inner {
-    max-width: var(--dxp-s-section-columns-max-width);
-    width: 100%;
-    margin: 0 auto;
-    height: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, auto);
-    gap: 2.625rem;
+    grid-gap: 2.625rem;
+}
+
+@media (max-width: 1023.98px) {
+    .home-tiles__inner {
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 1.5rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .home-tiles__inner {
+        grid-template-columns: 1fr;
+        grid-gap: 1.25rem;
+    }
 }
 
 .home-tiles__item {
@@ -30,24 +51,36 @@
     text-decoration: none;
 }
 
+@media (max-width: 1023.98px) {
+    .home-tiles__item {
+        min-height: 11.25rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .home-tiles__item {
+        min-height: 8.75rem;
+    }
+}
+
 .home-tiles__item-image {
+    position: relative;
     width: 100%;
-    overflow: hidden;
-    flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
     aspect-ratio: 16 / 9;
-    position: relative;
 }
 
 .home-tiles__item-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
     position: absolute;
     top: 0;
     left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .home-tiles__item-image-default {
@@ -57,12 +90,12 @@
 }
 
 .home-tiles__item-image-default img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
     position: absolute;
     top: 0;
     left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .home-tiles__item-content {
@@ -73,19 +106,11 @@
 }
 
 .home-tiles__item-title {
-    font-family: "Forza", sans-serif;
-    font-weight: 600;
-    font-size: 1.25rem;
-    line-height: 1.75rem;
+    font-size: var(--dxp-s-text-heading-medium-font-size);
+    font-family: var(--dxp-s-text-heading-medium-font-family);
+
     flex-grow: 0;
     text-transform: uppercase;
-
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    -webkit-line-clamp: 1;
-    line-clamp: 1;
-
     word-break: break-word;
 }
 
@@ -93,40 +118,7 @@
     margin-top: 1.375rem;
 }
 
-.home-tiles__item-description {
-    font-family: Helvetica, sans-serif;
-    font-size: 1rem;
-    line-height: 1.75rem;
-    flex-grow: 1;
-
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
-
-    word-break: break-word;
-}
-
-.home-tiles__item-title + .home-tiles__item-description {
-    margin-top: 0.4375rem;
-}
-
-@media (max-width: 1024px) {
-    .home-tiles__wrapper {
-        padding: 1.25rem 0;
-    }
-
-    .home-tiles__inner {
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(3, 1fr);
-        gap: 1.5rem;
-    }
-
-    .home-tiles__item {
-        min-height: 11.25rem;
-    }
-
+@media (max-width: 1023.98px) {
     .home-tiles__item-title {
         font-size: 1rem;
         line-height: 1.25rem;
@@ -135,7 +127,29 @@
     .home-tiles__item-image + .home-tiles__item-title {
         margin-top: 1rem;
     }
+}
 
+@media (max-width: 767.98px) {
+    .home-tiles__item-title {
+        font-size: 1rem;
+        line-height: 1.25rem;
+    }
+
+    .home-tiles__item-image + .home-tiles__item-title {
+        margin-top: 0.75rem;
+    }
+}
+
+.home-tiles__item-description {
+    font-size: var(--dxp-s-body-font-size);
+    font-family: var(--dxp-s-body-font-family);
+
+    flex-grow: 1;
+    word-break: break-word;
+    margin-top: 0.4375rem;
+}
+
+@media (max-width: 1023.98px) {
     .home-tiles__item-description {
         font-size: 0.875rem;
         line-height: 1.25rem;
@@ -147,30 +161,7 @@
     }
 }
 
-@media (max-width: 768px) {
-    .home-tiles__wrapper {
-        padding: 1rem 0;
-    }
-
-    .home-tiles__inner {
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(6, 1fr);
-        gap: 1.25rem;
-    }
-
-    .home-tiles__item {
-        min-height: 8.75rem;
-    }
-
-    .home-tiles__item-title {
-        font-size: 1rem;
-        line-height: 1.25rem;
-    }
-
-    .home-tiles__item-image + .home-tiles__item-title {
-        margin-top: 0.75rem;
-    }
-
+@media (max-width: 767.98px) {
     .home-tiles__item-description {
         font-size: 0.8rem;
     }
@@ -179,4 +170,25 @@
         margin-top: 0.1rem;
         line-height: 1.25rem;
     }
+}
+
+.custom-truncate {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.custom-truncate-line-1 {
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+}
+
+.custom-truncate-line-2 {
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+}
+
+.custom-truncate-line-3 {
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
 }

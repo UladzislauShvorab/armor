@@ -70,42 +70,27 @@ export default class HomeTiles extends LightningElement {
     @api tile6Link = null;
     @api tile6LinkOpenInNewTab = false;
 
-    @track noImagePictureSrc = NO_IMAGE_PICTURE;
     @track isFirstRender = true;
     @track customCssContainer = "custom-css-container";
     @track tilesData = [];
 
     connectedCallback() {
-        this.parseData();
+        this.tilesData = this.parseData();
     }
 
     renderedCallback() {
-        console.log(NO_IMAGE_PICTURE);
-
         if (this.isFirstRender) {
             this.isFirstRender = false;
-            if (this.tilesData.length > 0) {
-                this.addCustomCssStyles();
-            }
+            this.addCustomCssStyles();
         }
+    }
+
+    get getNoImage() {
+        return NO_IMAGE_PICTURE;
     }
 
     get tiles() {
         return this.tilesData.filter((tile) => tile.show);
-    }
-
-    get isShowTileTitle() {
-        return this.tiles.some((tile) => tile.showTitle && tile.title);
-    }
-
-    get isShowTileDescription() {
-        return this.tiles.some(
-            (tile) => tile.showDescription && tile.description
-        );
-    }
-
-    get isShowImage() {
-        return this.tiles.some((tile) => tile.showImage && tile.imgUrl !== "");
     }
 
     addCustomCssStyles() {
@@ -123,27 +108,47 @@ export default class HomeTiles extends LightningElement {
     }
 
     parseData() {
-        this.tilesData = [];
+        let result = [];
 
         for (let i = 1; i <= TILE_COUNT; i++) {
-            const tileData = {
+            let tileData = {
                 id: generateRandomId(),
                 show: this[`showTile${i}`],
-                showImage: this[`showTile${i}Image`],
-                image: this[`tile${i}Image`],
-                imgUrl: this.getImageUrl(this[`tile${i}Image`]),
-                showTitle: this[`showTile${i}Title`],
-                title: this[`tile${i}Title`],
-                showDescription: this[`showTile${i}Description`],
-                description: this[`tile${i}Description`],
-                link: this[`tile${i}Link`],
-                target: this[`tile${i}LinkOpenInNewTab`] ? "_blank" : "_self"
+                showImage: this[`showTile${i}Image`] && this[`tile${i}Image`],
+                imgUrl:
+                    this[`showTile${i}Image`] && this[`tile${i}Image`]
+                        ? this.getImageUrl(this[`tile${i}Image`])
+                        : null,
+                showTitle: this[`showTile${i}Title`] && this[`tile${i}Title`],
+                title:
+                    this[`showTile${i}Title`] && this[`tile${i}Title`]
+                        ? this[`tile${i}Title`]
+                        : null,
+                showDescription:
+                    this[`showTile${i}Description`] &&
+                    this[`tile${i}Description`],
+                description:
+                    this[`showTile${i}Description`] &&
+                    this[`tile${i}Description`]
+                        ? this[`tile${i}Description`]
+                        : null,
+                link:
+                    this[`showTile${i}`] && this[`tile${i}Link`]
+                        ? this[`tile${i}Link`]
+                        : null,
+                target: this[`tile${i}Link`]
+                    ? this[`tile${i}LinkOpenInNewTab`]
+                        ? "_blank"
+                        : "_self"
+                    : null
             };
 
             if (tileData.show) {
-                this.tilesData.push(tileData);
+                result.push(tileData);
             }
         }
+
+        return result;
     }
 
     getImageUrl(contentKey) {
