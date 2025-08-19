@@ -1,0 +1,55 @@
+<template>
+    <template lwc:if={hasContent}>
+        <div lwc:dom="manual" class={customCssContainer}></div>
+        <div class="home-resources__wrapper">
+            <div class="home-resources__inner">
+                <div class="home-resources__line">
+                    <div class="home-resources__subline"></div>
+                </div>
+                <template lwc:if={showTitle}>
+                    <div class="dxp-text-heading-large home-resources__title">
+                        {title}
+                    </div>
+                </template>
+                <div class="home-resources-categories">
+                    <template for:each={categories} for:item="category">
+                        <div key={category.id} class="home-resources__category">
+                            <template lwc:if={category.title}>
+                                <div
+                                    class="dxp-text-heading-medium home-resources__category-title">
+                                    {category.title}
+                                </div>
+                            </template>
+                            <ul class="home-resources__item-list">
+                                <template
+                                    for:each={category.items}
+                                    for:item="item">
+                                    <li
+                                        key={item.id}
+                                        class="home-resources__item">
+                                        <a
+                                            class="home-resources__item-link"
+                                            rel="noopener noreferrer"
+                                            href={item.url}
+                                            target={item.target}
+                                            data-item-name={item.name}
+                                            data-category-title={category.title}
+                                            onclick={handleItemClick}>
+                                            <c-icon
+                                                class="home-resources__item-icon"
+                                                type="file"></c-icon>
+                                            <span
+                                                class="dxp-body home-resources__item-text"
+                                                >{item.name}</span
+                                            >
+                                        </a>
+                                    </li>
+                                </template>
+                            </ul>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </template>
+</template>

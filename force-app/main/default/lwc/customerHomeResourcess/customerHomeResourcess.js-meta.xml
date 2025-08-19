@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>64.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Customer Home Resources</masterLabel>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+        <target>lightning__HomePage</target>
+        <target>lightning__AppPage</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property
+                name="showTitle"
+                type="Boolean"
+                label="Show Title"
+                default="true" />
+            <property
+                name="title"
+                type="String"
+                label="Title"
+                default="Resources" />
+            <property
+                name="resourcesTitleColor"
+                type="Color"
+                label="Resources Title Color"
+                default="rgb(0, 0, 0)" />
+            <property
+                name="resourcesLinkColor"
+                type="Color"
+                label="Resources Link Color"
+                default="rgb(0, 95, 178)" />
+
+            <!-- CATEGORY 1 -->
+            <property
+                name="showCategory1"
+                type="Boolean"
+                label="Show Category 1"
+                default="true" />
+            <property
+                name="category1Title"
+                type="String"
+                label="Category 1 Title"
+                default="CATALOGS" />
+            <property
+                name="category1Item1Name"
+                type="String"
+                label="Category 1 Item 1 Name"
+                default="Armor Express Catalog" />
+            <property
+                name="category1Item1File"
+                type="ContentReference"
+                label="Category 1 Item 1 File"
+                default="" />
+            <property
+                name="category1Item1OpenInNewTab"
+                type="Boolean"
+                label="Open Category 1 Item 1 In New Tab"
+                default="false" />
+            <property
+                name="category1Item2Name"
+                type="String"
+                label="Category 1 Item 2 Name"
+                default="Armor Express Catalog 2025" />
+            <property
+                name="category1Item2File"
+                type="ContentReference"
+                label="Category 1 Item 2 File"
+                default="" />
+            <property
+                name="category1Item2OpenInNewTab"
+                type="Boolean"
+                label="Open Category 1 Item 2 In New Tab"
+                default="false" />
+            <property
+                name="category1Item3Name"
+                type="String"
+                label="Category 1 Item 3 Name"
+                default="Armor Express Catalog 2024" />
+            <property
+                name="category1Item3File"
+                type="ContentReference"
+                label="Category 1 Item 3 File"
+                default="" />
+            <property
+                name="category1Item3OpenInNewTab"
+                type="Boolean"
+                label="Open Category 1 Item 3 In New Tab"
+                default="false" />
+            <property
+                name="category1Item4Name"
+                type="String"
+                label="Category 1 Item 4 Name"
+                default="" />
+            <property
+                name="category1Item4File"
+                type="ContentReference"
+                label="Category 1 Item 4 File"
+                default="" />
+            <property
+                name="category1Item4OpenInNewTab"
+                type="Boolean"
+                label="Open Category 1 Item 4 In New Tab"
+                default="false" />
+            <property
+                name="category1Item5Name"
+                type="String"
+                label="Category 1 Item 5 Name"
+                default="" />
+            <property
+                name="category1Item5File"
+                type="ContentReference"
+                label="Category 1 Item 5 File"
+                default="" />
+            <property
+                name="category1Item5OpenInNewTab"
+                type="Boolean"
+                label="Open Category 1 Item 5 In New Tab"
+                default="false" />
+
+            <!-- CATEGORY 2 -->
+            <property
+                name="showCategory2"
+                type="Boolean"
+                label="Show Category 2"
+                default="true" />
+            <property
+                name="category2Title"
+                type="String"
+                label="Category 2 Title"
+                default="GUIDES" />
+            <property
+                name="category2Item1Name"
+                type="String"
+                label="Category 2 Item 1 Name"
+                default="Using Sizing Vests" />
+            <property
+                name="category2Item1File"
+                type="ContentReference"
+                label="Category 2 Item 1 File"
+                default="" />
+            <property
+                name="category2Item1OpenInNewTab"
+                type="Boolean"
+                label="Open Category 2 Item 1 In New Tab"
+                default="false" />
+            <property
+                name="category2Item2Name"
+                type="String"
+                label="Category 2 Item 2 Name"
+                default="Improving Sizing Accuracy" />
+            <property
+                name="category2Item2File"
+                type="ContentReference"
+                label="Category 2 Item 2 File"
+                default="" />
+            <property
+                name="category2Item2OpenInNewTab"
+                type="Boolean"
+                label="Open Category 2 Item 2 In New Tab"
+                default="false" />
+            <property
+                name="category2Item3Name"
+                type="String"
+                label="Category 2 Item 3 Name"
+                default="Enhancing Customer Experience" />
+            <property
+                name="category2Item3File"
+                type="ContentReference"
+                label="Category 2 Item 3 File"
+                default="" />
+            <property
+                name="category2Item3OpenInNewTab"
+                type="Boolean"
+                label="Open Category 2 Item 3 In New Tab"
+                default="false" />
+            <property
+                name="category2Item4Name"
+                type="String"
+                label="Category 2 Item 4 Name"
+                default="" />
+            <property
+                name="category2Item4File"
+                type="ContentReference"
+                label="Category 2 Item 4 File"
+                default="" />
+            <property
+                name="category2Item4OpenInNewTab"
+                type="Boolean"
+                label="Open Category 2 Item 4 In New Tab"
+                default="false" />
+            <property
+                name="category2Item5Name"
+                type="String"
+                label="Category 2 Item 5 Name"
+                default="" />
+            <property
+                name="category2Item5File"
+                type="ContentReference"
+                label="Category 2 Item 5 File"
+                default="" />
+            <property
+                name="category2Item5OpenInNewTab"
+                type="Boolean"
+                label="Open Category 2 Item 5 In New Tab"
+                default="false" />
+
+            <!-- CATEGORY 3 -->
+            <property
+                name="showCategory3"
+                type="Boolean"
+                label="Show Category 3"
+                default="true" />
+            <property
+                name="category3Title"
+                type="String"
+                label="Category 3 Title"
+                default="LISTS" />
+            <property
+                name="category3Item1Name"
+                type="String"
+                label="Category 3 Item 1 Name"
+                default="Price Guide" />
+            <property
+                name="category3Item1File"
+                type="ContentReference"
+                label="Category 3 Item 1 File"
+                default="" />
+            <property
+                name="category3Item1OpenInNewTab"
+                type="Boolean"
+                label="Open Category 3 Item 1 In New Tab"
+                default="false" />
+            <property
+                name="category3Item2Name"
+                type="String"
+                label="Category 3 Item 2 Name"
+                default="" />
+            <property
+                name="category3Item2File"
+                type="ContentReference"
+                label="Category 3 Item 2 File"
+                default="" />
+            <property
+                name="category3Item2OpenInNewTab"
+                type="Boolean"
+                label="Open Category 3 Item 2 In New Tab"
+                default="false" />
+            <property
+                name="category3Item3Name"
+                type="String"
+                label="Category 3 Item 3 Name"
+                default="" />
+            <property
+                name="category3Item3File"
+                type="ContentReference"
+                label="Category 3 Item 3 File"
+                default="" />
+            <property
+                name="category3Item3OpenInNewTab"
+                type="Boolean"
+                label="Open Category 3 Item 3 In New Tab"
+                default="false" />
+            <property
+                name="category3Item4Name"
+                type="String"
+                label="Category 3 Item 4 Name"
+                default="" />
+            <property
+                name="category3Item4File"
+                type="ContentReference"
+                label="Category 3 Item 4 File"
+                default="" />
+            <property
+                name="category3Item4OpenInNewTab"
+                type="Boolean"
+                label="Open Category 3 Item 4 In New Tab"
+                default="false" />
+            <property
+                name="category3Item5Name"
+                type="String"
+                label="Category 3 Item 5 Name"
+                default="" />
+            <property
+                name="category3Item5File"
+                type="ContentReference"
+                label="Category 3 Item 5 File"
+                default="" />
+            <property
+                name="category3Item5OpenInNewTab"
+                type="Boolean"
+                label="Open Category 3 Item 5 In New Tab"
+                default="false" />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>
