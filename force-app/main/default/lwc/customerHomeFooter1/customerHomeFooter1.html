@@ -1,0 +1,120 @@
+<template>
+    <div lwc:dom="manual" class={customCssContainer}></div>
+    <footer class="footer__wrapper">
+        <div class="footer__inner">
+            <div class="footer__content">
+                <div class="footer__columns">
+                    <template for:each={columns} for:item="column">
+                        <div key={column.id} class="footer__column">
+                            <template lwc:if={column.title}>
+                                <h3
+                                    class="footer__column-title custom-truncate custom-truncate-line-3"
+                                    title={column.title}>
+                                    {column.title}
+                                </h3>
+                            </template>
+                            <ul class="footer__link-list">
+                                <template
+                                    for:each={column.links}
+                                    for:item="link">
+                                    <li key={link.id} class="footer__link-item">
+                                        <a
+                                            class="footer__link custom-truncate custom-truncate-line-2"
+                                            title={column.text}
+                                            href={link.url}
+                                            onclick={handleLinkClick}>
+                                            {link.text}
+                                        </a>
+                                    </li>
+                                </template>
+                            </ul>
+                        </div>
+                    </template>
+                </div>
+
+                <div class="footer__brand-section">
+                    <template lwc:if={logoUrl}>
+                        <div class="footer__logo-container">
+                            <img
+                                src={logoUrl}
+                                alt="Armor Express Logo"
+                                class="footer__logo" />
+                        </div>
+                    </template>
+
+                    <template lwc:if={showSocialMedia}>
+                        <div class="footer__social-media">
+                            <template lwc:if={socialMedia1}>
+                                <a
+                                    href={socialMedia1}
+                                    class="footer__social-link"
+                                    target="_blank"
+                                    rel="noopener noreferrer">
+                                    <c-icon
+                                        type="facebook"
+                                        class="footer__social-icon"></c-icon>
+                                </a>
+                            </template>
+                            <template lwc:if={socialMedia2}>
+                                <a
+                                    href={socialMedia2}
+                                    class="footer__social-link"
+                                    target="_blank"
+                                    rel="noopener noreferrer">
+                                    <c-icon
+                                        type="instagram"
+                                        class="footer__social-icon"></c-icon>
+                                </a>
+                            </template>
+                            <template lwc:if={socialMedia3}>
+                                <a
+                                    href={socialMedia3}
+                                    class="footer__social-link"
+                                    target="_blank"
+                                    rel="noopener noreferrer">
+                                    <c-icon
+                                        type="linkedin"
+                                        class="footer__social-icon"></c-icon>
+                                </a>
+                            </template>
+                            <template lwc:if={socialMedia4}>
+                                <a
+                                    href={socialMedia4}
+                                    class="footer__social-link"
+                                    target="_blank"
+                                    rel="noopener noreferrer">
+                                    <c-icon
+                                        type="youtube"
+                                        class="footer__social-icon"></c-icon>
+                                </a>
+                            </template>
+                        </div>
+                    </template>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <div class="footer__bottom__line">
+                    <div class="footer__bottom__subline"></div>
+                </div>
+                <div class="footer__bottom-content">
+                    <div class="footer__copyright">{copyrightText}</div>
+
+                    <template lwc:if={showBottomLinks}>
+                        <div class="footer__bottom-links">
+                            <template for:each={bottomLinks} for:item="link">
+                                <a
+                                    key={link.id}
+                                    href={link.url}
+                                    class="footer__bottom-link"
+                                    onclick={handleLinkClick}>
+                                    {link.text}
+                                </a>
+                            </template>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </footer>
+</template>

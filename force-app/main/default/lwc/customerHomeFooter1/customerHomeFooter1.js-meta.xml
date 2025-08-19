@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>64.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Customer Home Footer</masterLabel>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+        <target>lightning__HomePage</target>
+        <target>lightning__AppPage</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <!-- STYLING PROPERTIES -->
+            <property
+                name="footerBackgroundColor"
+                type="Color"
+                label="Footer Background Color"
+                default="rgba(0, 42, 65, 1)" />
+            <property
+                name="footerTextColor"
+                type="Color"
+                label="Footer Text Color"
+                default="rgb(255, 255, 255)" />
+            <property
+                name="logoFile"
+                type="ContentReference"
+                label="Logo Image"
+                filter="cms_image"
+                default="" />
+
+            <!-- SOCIAL MEDIA SECTION -->
+            <property
+                name="showSocialMedia"
+                type="Boolean"
+                label="Show Social Media"
+                default="true" />
+            <property
+                name="socialMedia1"
+                type="String"
+                label="Social Media 1 URL"
+                default="socialMedia1" />
+            <property
+                name="socialMedia2"
+                type="String"
+                label="Social Media 2 URL"
+                default="socialMedia2" />
+            <property
+                name="socialMedia3"
+                type="String"
+                label="Social Media 3 URL"
+                default="socialMedia3" />
+            <property
+                name="socialMedia4"
+                type="String"
+                label="Social Media 4 URL"
+                default="socialMedia4" />
+
+            <!-- COLUMN 1: ARMOR EXPRESS -->
+            <property
+                name="showColumn1"
+                type="Boolean"
+                label="Show Column 1"
+                default="true" />
+            <property
+                name="column1Title"
+                type="String"
+                label="Column 1 Title"
+                default="ARMOR EXPRESS" />
+            <property
+                name="showColumn1Link1"
+                type="Boolean"
+                label="Show Column 1 Link 1"
+                default="true" />
+            <property
+                name="column1Link1Text"
+                type="String"
+                label="Column 1 Link 1 Text"
+                default="About" />
+            <property
+                name="column1Link1Url"
+                type="String"
+                label="Column 1 Link 1 URL"
+                default="/about" />
+            <property
+                name="showColumn1Link2"
+                type="Boolean"
+                label="Show Column 1 Link 2"
+                default="true" />
+            <property
+                name="column1Link2Text"
+                type="String"
+                label="Column 1 Link 2 Text"
+                default="Quality" />
+            <property
+                name="column1Link2Url"
+                type="String"
+                label="Column 1 Link 2 URL"
+                default="/quality" />
+            <property
+                name="showColumn1Link3"
+                type="Boolean"
+                label="Show Column 1 Link 3"
+                default="true" />
+            <property
+                name="column1Link3Text"
+                type="String"
+                label="Column 1 Link 3 Text"
+                default="Events &amp; Tradeshows" />
+            <property
+                name="column1Link3Url"
+                type="String"
+                label="Column 1 Link 3 URL"
+                default="/events" />
+            <property
+                name="showColumn1Link4"
+                type="Boolean"
+                label="Show Column 1 Link 4"
+                default="true" />
+            <property
+                name="column1Link4Text"
+                type="String"
+                label="Column 1 Link 4 Text"
+                default="Careers" />
+            <property
+                name="column1Link4Url"
+                type="String"
+                label="Column 1 Link 4 URL"
+                default="/careers" />
+            <property
+                name="showColumn1Link5"
+                type="Boolean"
+                label="Show Column 1 Link 5"
+                default="true" />
+            <property
+                name="column1Link5Text"
+                type="String"
+                label="Column 1 Link 5 Text"
+                default="Contact" />
+            <property
+                name="column1Link5Url"
+                type="String"
+                label="Column 1 Link 5 URL"
+                default="/contact" />
+            <property
+                name="showColumn1Link6"
+                type="Boolean"
+                label="Show Column 1 Link 6"
+                default="false" />
+            <property
+                name="column1Link6Text"
+                type="String"
+                label="Column 1 Link 6 Text"
+                default="" />
+            <property
+                name="column1Link6Url"
+                type="String"
+                label="Column 1 Link 6 URL"
+                default="" />
+            <property
+                name="showColumn1Link7"
+                type="Boolean"
+                label="Show Column 1 Link 7"
+                default="false" />
+            <property
+                name="column1Link7Text"
+                type="String"
+                label="Column 1 Link 7 Text"
+                default="" />
+            <property
+                name="column1Link7Url"
+                type="String"
+                label="Column 1 Link 7 URL"
+                default="" />
+
+            <!-- COLUMN 2: SUPPORT -->
+            <property
+                name="showColumn2"
+                type="Boolean"
+                label="Show Column 2"
+                default="true" />
+            <property
+                name="column2Title"
+                type="String"
+                label="Column 2 Title"
+                default="SUPPORT" />
+            <property
+                name="showColumn2Link1"
+                type="Boolean"
+                label="Show Column 2 Link 1"
+                default="true" />
+            <property
+                name="column2Link1Text"
+                type="String"
+                label="Column 2 Link 1 Text"
+                default="Software &amp; Firmware" />
+            <property
+                name="column2Link1Url"
+                type="String"
+                label="Column 2 Link 1 URL"
+                default="/support/software" />
+            <property
+                name="showColumn2Link2"
+                type="Boolean"
+                label="Show Column 2 Link 2"
+                default="true" />
+            <property
+                name="column2Link2Text"
+                type="String"
+                label="Column 2 Link 2 Text"
+                default="Product Registration" />
+            <property
+                name="column2Link2Url"
+                type="String"
+                label="Column 2 Link 2 URL"
+                default="/support/registration" />
+            <property
+                name="showColumn2Link3"
+                type="Boolean"
+                label="Show Column 2 Link 3"
+                default="true" />
+            <property
+                name="column2Link3Text"
+                type="String"
+                label="Column 2 Link 3 Text"
+                default="Catalogs &amp; Price Guides" />
+            <property
+                name="column2Link3Url"
+                type="String"
+                label="Column 2 Link 3 URL"
+                default="/support/catalogs" />
+            <property
+                name="showColumn2Link4"
+                type="Boolean"
+                label="Show Column 2 Link 4"
+                default="true" />
+            <property
+                name="column2Link4Text"
+                type="String"
+                label="Column 2 Link 4 Text"
+                default="Warranty" />
+            <property
+                name="column2Link4Url"
+                type="String"
+                label="Column 2 Link 4 URL"
+                default="/support/warranty" />
+            <property
+                name="showColumn2Link5"
+                type="Boolean"
+                label="Show Column 2 Link 5"
+                default="true" />
+            <property
+                name="column2Link5Text"
+                type="String"
+                label="Column 2 Link 5 Text"
+                default="Returns" />
+            <property
+                name="column2Link5Url"
+                type="String"
+                label="Column 2 Link 5 URL"
+                default="/support/returns" />
+            <property
+                name="showColumn2Link6"
+                type="Boolean"
+                label="Show Column 2 Link 6"
+                default="true" />
+            <property
+                name="column2Link6Text"
+                type="String"
+                label="Column 2 Link 6 Text"
+                default="Terms of Sale" />
+            <property
+                name="column2Link6Url"
+                type="String"
+                label="Column 2 Link 6 URL"
+                default="/support/terms-of-sale" />
+            <property
+                name="showColumn2Link7"
+                type="Boolean"
+                label="Show Column 2 Link 7"
+                default="true" />
+            <property
+                name="column2Link7Text"
+                type="String"
+                label="Column 2 Link 7 Text"
+                default="Terms of Purchase" />
+            <property
+                name="column2Link7Url"
+                type="String"
+                label="Column 2 Link 7 URL"
+                default="/support/terms-of-purchase" />
+
+            <!-- COLUMN 3: EXPLORE -->
+            <property
+                name="showColumn3"
+                type="Boolean"
+                label="Show Column 3"
+                default="true" />
+            <property
+                name="column3Title"
+                type="String"
+                label="Column 3 Title"
+                default="EXPLORE" />
+            <property
+                name="showColumn3Link1"
+                type="Boolean"
+                label="Show Column 3 Link 1"
+                default="true" />
+            <property
+                name="column3Link1Text"
+                type="String"
+                label="Column 3 Link 1 Text"
+                default="Products" />
+            <property
+                name="column3Link1Url"
+                type="String"
+                label="Column 3 Link 1 URL"
+                default="/products" />
+            <property
+                name="showColumn3Link2"
+                type="Boolean"
+                label="Show Column 3 Link 2"
+                default="true" />
+            <property
+                name="column3Link2Text"
+                type="String"
+                label="Column 3 Link 2 Text"
+                default="Solutions" />
+            <property
+                name="column3Link2Url"
+                type="String"
+                label="Column 3 Link 2 URL"
+                default="/solutions" />
+            <property
+                name="showColumn3Link3"
+                type="Boolean"
+                label="Show Column 3 Link 3"
+                default="true" />
+            <property
+                name="column3Link3Text"
+                type="String"
+                label="Column 3 Link 3 Text"
+                default="Industries" />
+            <property
+                name="column3Link3Url"
+                type="String"
+                label="Column 3 Link 3 URL"
+                default="/industries" />
+            <property
+                name="showColumn3Link4"
+                type="Boolean"
+                label="Show Column 3 Link 4"
+                default="true" />
+            <property
+                name="column3Link4Text"
+                type="String"
+                label="Column 3 Link 4 Text"
+                default="Resources" />
+            <property
+                name="column3Link4Url"
+                type="String"
+                label="Column 3 Link 4 URL"
+                default="/resources" />
+            <property
+                name="showColumn3Link5"
+                type="Boolean"
+                label="Show Column 3 Link 5"
+                default="false" />
+            <property
+                name="column3Link5Text"
+                type="String"
+                label="Column 3 Link 5 Text"
+                default="" />
+            <property
+                name="column3Link5Url"
+                type="String"
+                label="Column 3 Link 5 URL"
+                default="" />
+            <property
+                name="showColumn3Link6"
+                type="Boolean"
+                label="Show Column 3 Link 6"
+                default="false" />
+            <property
+                name="column3Link6Text"
+                type="String"
+                label="Column 3 Link 6 Text"
+                default="" />
+            <property
+                name="column3Link6Url"
+                type="String"
+                label="Column 3 Link 6 URL"
+                default="" />
+            <property
+                name="showColumn3Link7"
+                type="Boolean"
+                label="Show Column 3 Link 7"
+                default="false" />
+            <property
+                name="column3Link7Text"
+                type="String"
+                label="Column 3 Link 7 Text"
+                default="" />
+            <property
+                name="column3Link7Url"
+                type="String"
+                label="Column 3 Link 7 URL"
+                default="" />
+
+            <!-- BOTTOM LINKS -->
+            <property
+                name="showBottomLinks"
+                type="Boolean"
+                label="Show Bottom Links"
+                default="true" />
+            <property
+                name="showBottomLink1"
+                type="Boolean"
+                label="Show Bottom Link 1"
+                default="true" />
+            <property
+                name="bottomLink1Text"
+                type="String"
+                label="Bottom Link 1 Text"
+                default="Privacy Policy" />
+            <property
+                name="bottomLink1Url"
+                type="String"
+                label="Bottom Link 1 URL"
+                default="/privacy-policy" />
+            <property
+                name="showBottomLink2"
+                type="Boolean"
+                label="Show Bottom Link 2"
+                default="true" />
+            <property
+                name="bottomLink2Text"
+                type="String"
+                label="Bottom Link 2 Text"
+                default="Cookie Policy" />
+            <property
+                name="bottomLink2Url"
+                type="String"
+                label="Bottom Link 2 URL"
+                default="/cookie-policy" />
+            <property
+                name="showBottomLink3"
+                type="Boolean"
+                label="Show Bottom Link 3"
+                default="true" />
+            <property
+                name="bottomLink3Text"
+                type="String"
+                label="Bottom Link 3 Text"
+                default="Patent Notification" />
+            <property
+                name="bottomLink3Url"
+                type="String"
+                label="Bottom Link 3 URL"
+                default="/patent-notification" />
+            <property
+                name="showBottomLink4"
+                type="Boolean"
+                label="Show Bottom Link 4"
+                default="true" />
+            <property
+                name="bottomLink4Text"
+                type="String"
+                label="Bottom Link 4 Text"
+                default="CA Proposition 65" />
+            <property
+                name="bottomLink4Url"
+                type="String"
+                label="Bottom Link 4 URL"
+                default="/ca-proposition-65" />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>
