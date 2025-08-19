@@ -1,32 +1,29 @@
 import { LightningElement, api, track, wire } from "lwc";
-
 import { getRecord, getFieldValue } from "lightning/uiRecordApi";
 import FIRSTNAME_FIELD from "@salesforce/schema/User.FirstName";
 import USER_ID from "@salesforce/user/Id";
 import communityBasePath from "@salesforce/community/basePath";
-
 import { addCustomCssStyles, generateRandomId } from "c/utils";
 
 const GUEST = "Guest";
+const LEVELS = ["First", "Second", "Third"];
 
 export default class HomeBanner extends LightningElement {
     @api showBreadcrumbs = false;
-    userId = USER_ID;
-
     @api showTheFirstLevelBreadcrumb = false;
     @api theFirstLevelBreadcrumbLabel = null;
-    @api theFirstBreadcrumbLinkOpenLinkInNewTab;
     @api theFirstLevelBreadcrumbLink = null;
+    @api theFirstBreadcrumbLinkOpenLinkInNewTab = false;
 
     @api showTheSecondLevelBreadcrumb = false;
     @api theSecondLevelBreadcrumbLabel = null;
-    @api theSecondBreadcrumbLinkOpenLinkInNewTab = null;
     @api theSecondLevelBreadcrumbLink = null;
+    @api theSecondBreadcrumbLinkOpenLinkInNewTab = false;
 
     @api showTheThirdLevelBreadcrumb = false;
     @api theThirdLevelBreadcrumbLabel = null;
-    @api theThirdBreadcrumbLinkOpenLinkInNewTab = null;
     @api theThirdLevelBreadcrumbLink = null;
+    @api theThirdBreadcrumbLinkOpenLinkInNewTab = false;
 
     @api showBackgroundImage = false;
     @api backgroundImage = null;
@@ -44,15 +41,17 @@ export default class HomeBanner extends LightningElement {
     @api descriptionColor = null;
     @api maxDescriptionWidth = null;
 
-    @track levelsMeta = ["First", "Second", "Third"];
+    userId = USER_ID;
     @track isFirstRender = true;
     @track customCssContainer = "custom-css-container";
+
+    @track parsed = { breadcrumbs: [], bgImages: [] };
 
     @wire(getRecord, { recordId: "$userId", fields: [FIRSTNAME_FIELD] })
     userRecord;
 
     connectedCallback() {
-        console.log("UserId:", this.userId);
+        this.parsed = this.parseData();
     }
 
     renderedCallback() {
@@ -62,65 +61,72 @@ export default class HomeBanner extends LightningElement {
         }
     }
 
+    get hasContent() {
+        if (
+            this.showBackgroundImage &&
+            (this.backgroundImage ||
+                this.tabletBackgroundImage ||
+                this.mobileBackgroundImage)
+        ) {
+            return true;
+        }
+
+        if (this.showBreadcrumbs && this.breadcrumbs.length > 0) {
+            return true;
+        }
+
+        if (this.showTitle && this.title) {
+            return true;
+        }
+
+        if (this.showDescription && this.description) {
+            return true;
+        }
+
+        for (let i = 1; i <= 3; i++) {
+            if (this[`showColumn${i}`]) {
+                if (this[`column${i}Title`]) return true;
+                for (let j = 1; j <= 7; j++) {
+                    if (
+                        this[`showColumn${i}Link${j}`] &&
+                        this[`column${i}Link${j}Text`]
+                    ) {
+                        return true;
+                    }
+                }
+            }
+        }
+
+        if (this.showBottomLinks) {
+            for (let i = 1; i <= 4; i++) {
+                if (this[`showBottomLink${i}`] && this[`bottomLink${i}Text`]) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
     get effectiveFirstName() {
-        if (this.userRecord.data) {
+        if (this.userRecord && this.userRecord.data) {
             return (
                 getFieldValue(this.userRecord.data, FIRSTNAME_FIELD) || GUEST
             );
         }
-
         return null;
     }
 
     get getTitle() {
-        let firstName = this.effectiveFirstName;
-
         if (!this.title) return null;
-        if (!this.title.includes("{0}")) return this.title;
-        return this.title.replace("{0}", firstName || GUEST);
-    }
-
-    get getDescription() {
-        if (!this.description) return null;
-        return this.description;
+        const name = this.effectiveFirstName || GUEST;
+        return this.title.includes("{0}")
+            ? this.title.replace("{0}", name)
+            : this.title;
     }
 
     get breadcrumbs() {
-        let crumbs = [];
-
-        this.levelsMeta.forEach((levelName) => {
-            let showKey = `showThe${levelName}LevelBreadcrumb`;
-            let labelKey = `the${levelName}LevelBreadcrumbLabel`;
-            let linkKey = `the${levelName}LevelBreadcrumbLink`;
-            let targetKey = `isTheBreadcrumbLinkExternal`;
-
-            if (this[showKey] && this[labelKey]) {
-                crumbs.push({
-                    id: generateRandomId(),
-                    label: this[labelKey],
-                    link: this[linkKey],
-                    target: this[targetKey],
-                    showArrow: crumbs.length > 0
-                });
-            }
-        });
-
-        return crumbs;
-    }
-
-    get backgroundImageUrl() {
-        if (!this.backgroundImage) return null;
-        return this.getImageUrl(this.backgroundImage);
-    }
-
-    get tabletBackgroundImageUrl() {
-        if (!this.tabletBackgroundImage) return null;
-        return this.getImageUrl(this.tabletBackgroundImage);
-    }
-
-    get mobileBackgroundImageUrl() {
-        if (!this.mobileBackgroundImage) return null;
-        return this.getImageUrl(this.mobileBackgroundImage);
+        return this.parsed.breadcrumbs;
     }
 
     get isShowBackgroundImage() {
@@ -132,108 +138,93 @@ export default class HomeBanner extends LightningElement {
         );
     }
 
-    get hasBreadcrumbs() {
-        return (
-            this.showTheFirstLevelBreadcrumb ||
-            this.showTheSecondLevelBreadcrumb ||
-            this.showTheThirdLevelBreadcrumb
-        );
-    }
+    parseData() {
+        const breadcrumbs = [];
 
-    get isTheBreadcrumbLinkExternal() {
-        for (let level of this.levelsMeta) {
-            let flag = this[`the${level}BreadcrumbLinkOpenLinkInNewTab`];
-            if (flag !== undefined) {
-                return flag ? "_blank" : "_self";
+        LEVELS.forEach((level) => {
+            const show = this[`showThe${level}LevelBreadcrumb`];
+            const label = this[`the${level}LevelBreadcrumbLabel`];
+            const link = this[`the${level}LevelBreadcrumbLink`];
+            const openInNew = this[`the${level}BreadcrumbLinkOpenLinkInNewTab`];
+
+            if (show && label) {
+                breadcrumbs.push({
+                    id: generateRandomId(),
+                    label,
+                    link: link,
+                    target: link ? (openInNew ? "_blank" : "_self") : null,
+                    showArrow: breadcrumbs.length > 0
+                });
             }
-        }
-        return "_self";
+        });
+
+        const bgCandidates = [
+            { key: this.backgroundImage, media: null },
+            { key: this.tabletBackgroundImage, media: "max-width: 1023.98px" },
+            { key: this.mobileBackgroundImage, media: "max-width: 767.98px" }
+        ];
+
+        const bgImages = bgCandidates
+            .map((it) => ({ url: this.getImageUrl(it.key), media: it.media }))
+            .filter((it) => this.showBackgroundImage && it.url);
+
+        return { breadcrumbs, bgImages };
     }
 
     addCustomCssStyles() {
-        let styleText = ``;
+        let styleText = "";
 
         if (this.showBreadcrumbs) {
             styleText += `
             .home-banner__breadcrumbs {
                 visibility: visible !important;
+                display: flex !important;
+            }`;
+        } else {
+            styleText += `
+            .home-banner__inner {
+                display: flex;
+                justify-content: center;
             }`;
         }
 
-        let bgImages = [
-            { url: this.backgroundImageUrl, media: null },
-            {
-                url: this.tabletBackgroundImageUrl,
-                media: "max-width: 1023.98px"
-            },
-            { url: this.mobileBackgroundImageUrl, media: "max-width: 767.98px" }
-        ].filter((item) => this.showBackgroundImage && item.url);
-
-        if (bgImages.length) {
+        const bgImages = this.parsed.bgImages;
+        if (bgImages && bgImages.length) {
             bgImages.forEach(({ url, media }) => {
-                let css = `
-                .home-banner__wrapper {
-                    background-image: url('${url}') !important;
-                    background-size: cover !important;
-                    background-position: center !important;
-                    background-repeat: no-repeat !important;
-                }
-            `;
+                const css = `.home-banner__wrapper{
+                    background-image:url('${url}') !important;
+                    background-size:cover !important;
+                    background-position:center !important;
+                    background-repeat:no-repeat !important;
+                }`;
                 styleText += media
-                    ? `@media screen and (${media}) { ${css} }`
+                    ? `@media screen and (${media}){${css}}`
                     : css;
             });
-        } else {
-            // fallback: просто цвет
-            styleText += `
-            .home-banner__wrapper {
-                background-color: ${this.backgroundColor} !important;
-            }
-        `;
+        } else if (this.backgroundColor) {
+            styleText += `.home-banner__wrapper{background-color:${this.backgroundColor} !important;}`;
         }
 
         if (this.showTitle) {
-            if (this.titleColor) {
-                styleText += `
-                .home-banner__content-title {
-                    color: ${this.titleColor} !important;
-                }
-            `;
-            }
-            if (this.maxTitleWidth) {
-                styleText += `
-                .home-banner__content-title {
-                    max-width: ${this.maxTitleWidth} !important;
-                }
-            `;
-            }
+            if (this.titleColor)
+                styleText += `.home-banner__content-title{color:${this.titleColor} !important;}`;
+            if (this.maxTitleWidth)
+                styleText += `.home-banner__content-title{max-width:${this.maxTitleWidth} !important;}`;
         }
 
         if (this.showDescription) {
-            if (this.descriptionColor) {
-                styleText += `
-                .home-banner__content-description {
-                    color: ${this.descriptionColor} !important;
-                }
-            `;
-            }
-            if (this.maxDescriptionWidth) {
-                styleText += `
-                .home-banner__content-description {
-                    max-width: ${this.maxDescriptionWidth} !important;
-                }
-            `;
-            }
+            if (this.descriptionColor)
+                styleText += `.home-banner__content-description{color:${this.descriptionColor} !important;}`;
+            if (this.maxDescriptionWidth)
+                styleText += `.home-banner__content-description{max-width:${this.maxDescriptionWidth} !important;}`;
         }
 
         addCustomCssStyles(this, this.customCssContainer, styleText);
     }
 
     getImageUrl(contentKey) {
-        if (contentKey) {
-            return `${communityBasePath}/sfsites/c/cms/delivery/media/${contentKey}`;
-        }
-
-        return null;
+        return contentKey
+            ? `${communityBasePath}/sfsites/c/cms/delivery/media/${contentKey}`
+            : null;
     }
 }

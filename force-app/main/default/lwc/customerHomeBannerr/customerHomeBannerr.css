@@ -5,17 +5,17 @@
 }
 .home-banner__wrapper {
     padding: 1.25rem 2.5rem;
-    min-height: 18.75rem;
+    height: 18.75rem;
 }
 
 .home-banner__inner {
     max-width: var(--dxp-s-section-columns-max-width);
     width: 100%;
-    margin: 0 auto;
     height: 100%;
-    gap: 3.875rem;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
+    gap: 3.875rem;
 }
 
 .home-banner__breadcrumbs {
@@ -94,30 +94,15 @@
 }
 
 .home-banner__content .home-banner__content-title {
-    font-family: "Forza", sans-serif;
-    text-transform: uppercase;
-    font-weight: 700;
-    font-size: 2.25rem;
-
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
+    font-size: var(--dxp-s-text-heading-extra-large-font-size);
+    font-family: var(--dxp-s-text-heading-extra-large-font-family);
 
     word-break: break-word;
 }
 
 .home-banner__content .home-banner__content-description {
-    font-family: Helvetica, sans-serif;
-    font-size: 1rem;
-    font-weight: normal;
-
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
+    font-size: var(--dxp-s-body-font-size);
+    font-family: var(--dxp-s-body-font-family);
 
     word-break: break-word;
 }
@@ -126,7 +111,28 @@
     margin-top: 0.5rem;
 }
 
-@media (max-width: 1023.98px) {
+.custom-truncate {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.custom-truncate-line-1 {
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+}
+
+.custom-truncate-line-2 {
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+}
+
+.custom-truncate-line-3 {
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+}
+
+@media (max-width: 1024px) {
     .home-banner__wrapper {
         padding: 1.25rem 1.5rem;
     }
@@ -147,10 +153,10 @@
     }
 }
 
-@media (max-width: 767.98px) {
+@media (max-width: 768px) {
     .home-banner__wrapper {
         padding: 1rem;
-        min-height: 250px;
+        height: 15.625rem;
     }
     .home-banner__breadcrumbs {
         flex-wrap: wrap;

@@ -1,49 +1,56 @@
 <template>
-    <div lwc:dom="manual" class={customCssContainer}></div>
-    <div class="home-banner__wrapper">
-        <div class="home-banner__inner">
-            <template lwc:if={hasBreadcrumbs}>
-                <div class="home-banner__breadcrumbs">
-                    <template
-                        for:each={breadcrumbs}
-                        for:item="breadcrumb"
-                        for:index="index">
-                        <div
-                            key={breadcrumb.id}
-                            class="home-banner__breadcrumb-item">
-                            <template lwc:if={breadcrumb.showArrow}>
-                                <div class="home-banner__arrow-wrapper">
-                                    <c-icon
-                                        class="home-banner__arrow"
-                                        type="banner-arrow"></c-icon>
-                                </div>
-                            </template>
+    <template lwc:if={hasContent}>
+        <div lwc:dom="manual" class={customCssContainer}></div>
 
-                            <a
-                                href={breadcrumb.link}
-                                target={breadcrumb.target}
-                                class="home-banner__breadcrumb"
-                                data-level={breadcrumb.id}>
-                                {breadcrumb.label}
-                            </a>
+        <div class="home-banner__wrapper">
+            <div class="home-banner__inner">
+                <template lwc:if={showBreadcrumbs}>
+                    <div class="home-banner__breadcrumbs">
+                        <template
+                            for:each={breadcrumbs}
+                            for:item="breadcrumb"
+                            for:index="index">
+                            <div
+                                key={breadcrumb.id}
+                                class="home-banner__breadcrumb-item">
+                                <template lwc:if={breadcrumb.showArrow}>
+                                    <div class="home-banner__arrow-wrapper">
+                                        <c-icon
+                                            class="home-banner__arrow"
+                                            type="banner-arrow"></c-icon>
+                                    </div>
+                                </template>
+
+                                <a
+                                    href={breadcrumb.link}
+                                    target={breadcrumb.target}
+                                    class="home-banner__breadcrumb"
+                                    data-level={breadcrumb.id}>
+                                    {breadcrumb.label}
+                                </a>
+                            </div>
+                        </template>
+                    </div>
+                </template>
+
+                <div class="home-banner__content">
+                    <template lwc:if={showTitle}>
+                        <div
+                            class="dxp-text-heading-xlarge home-banner__content-title custom-truncate custom-truncate-line-2"
+                            title={getTitle}>
+                            {getTitle}
+                        </div>
+                    </template>
+
+                    <template lwc:if={showDescription}>
+                        <div
+                            class="dxp-body home-banner__content-description custom-truncate custom-truncate-line-2"
+                            title={description}>
+                            {description}
                         </div>
                     </template>
                 </div>
-            </template>
-            <div class="home-banner__content">
-                <template lwc:if={showTitle}>
-                    <h1 class="home-banner__content-title" title={getTitle}>
-                        {getTitle}
-                    </h1>
-                </template>
-                <template lwc:if={showDescription}>
-                    <p
-                        class="home-banner__content-description"
-                        title={getDescription}>
-                        {getDescription}
-                    </p>
-                </template>
             </div>
         </div>
-    </div>
+    </template>
 </template>
