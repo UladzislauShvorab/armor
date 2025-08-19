@@ -3,15 +3,12 @@
     "trailingComma": "none",
     "tabWidth": 4,
     "plugins": ["@prettier/plugin-xml"],
+    "xmlSelfClosingSpace": true,
+    "xmlWhitespaceSensitivity": "ignore",
+    "xmlKeepAttributesOnSameLine": true,
     "overrides": [
-        {
-            "files": "*.xml",
-            "options": { "parser": "xml" }
-        },
-        {
-            "files": "**/lwc/**/*.html",
-            "options": { "parser": "lwc" }
-        },
+        { "files": "*.xml", "options": { "parser": "xml" } },
+        { "files": "**/lwc/**/*.html", "options": { "parser": "lwc" } },
         {
             "files": "*.{cmp,page,component}",
             "options": { "parser": "html" }
