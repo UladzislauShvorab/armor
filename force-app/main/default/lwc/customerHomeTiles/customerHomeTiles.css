@@ -5,7 +5,7 @@
 
 @media (max-width: 1023.98px) {
     .home-tiles__wrapper {
-        padding: 1.25rem 0;
+        padding: 1.5rem 0;
     }
 }
 
@@ -19,6 +19,12 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 2.625rem;
+}
+
+@media (max-width: 1198.98px) {
+    .home-tiles__inner {
+        grid-gap: 2rem;
+    }
 }
 
 @media (max-width: 1023.98px) {

@@ -1,41 +1,43 @@
 <template>
-    <div lwc:dom="manual" class={customCssContainer}></div>
-    <div class="home-tiles__wrapper">
-        <div class="home-tiles__inner">
-            <template for:each={tiles} for:item="tile">
-                <template lwc:if={tile.show}>
-                    <a
-                        key={tile.id}
-                        class="home-tiles__item"
-                        target={tile.target}
-                        href={tile.link}>
-                        <div class="home-tiles__item-image">
-                            <template lwc:if={tile.showImage}>
-                                <img src={tile.imgUrl} alt={tile.title} />
-                            </template>
-                            <template lwc:else>
-                                <img
-                                    class="home-tiles__item-image-default"
-                                    src={getNoImage} />
-                            </template>
-                        </div>
-                        <template lwc:if={tile.showTitle}>
-                            <div
-                                class="dxp-text-heading-medium home-tiles__item-title custom-truncate custom-truncate-line-2"
-                                title={tile.title}>
-                                {tile.title}
+    <template lwc:if={hasContent}>
+        <div lwc:dom="manual" class={customCssContainer}></div>
+        <div class="home-tiles__wrapper">
+            <div class="home-tiles__inner">
+                <template for:each={tiles} for:item="tile">
+                    <template lwc:if={tile.show}>
+                        <a
+                            key={tile.id}
+                            class="home-tiles__item"
+                            target={tile.target}
+                            href={tile.link}>
+                            <div class="home-tiles__item-image">
+                                <template lwc:if={tile.showImage}>
+                                    <img src={tile.imgUrl} alt={tile.title} />
+                                </template>
+                                <template lwc:else>
+                                    <img
+                                        class="home-tiles__item-image-default"
+                                        src={getNoImage} />
+                                </template>
                             </div>
-                        </template>
-                        <template lwc:if={tile.showDescription}>
-                            <div
-                                class="dxp-body home-tiles__item-description custom-truncate custom-truncate-line-2"
-                                title={tile.description}>
-                                {tile.description}
-                            </div>
-                        </template>
-                    </a>
+                            <template lwc:if={tile.showTitle}>
+                                <div
+                                    class="dxp-text-heading-medium home-tiles__item-title custom-truncate custom-truncate-line-2"
+                                    title={tile.title}>
+                                    {tile.title}
+                                </div>
+                            </template>
+                            <template lwc:if={tile.showDescription}>
+                                <div
+                                    class="dxp-body home-tiles__item-description custom-truncate custom-truncate-line-2"
+                                    title={tile.description}>
+                                    {tile.description}
+                                </div>
+                            </template>
+                        </a>
+                    </template>
                 </template>
-            </template>
+            </div>
         </div>
-    </div>
+    </template>
 </template>

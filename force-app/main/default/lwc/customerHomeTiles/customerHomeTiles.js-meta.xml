@@ -58,11 +58,7 @@
                 type="String"
                 label="Tile 1 Description"
                 default="Select your product, follow the step-by-step process and generate a quote for your customized product." />
-            <property
-                name="tile1Link"
-                type="String"
-                label="Tile 1 Link"
-                default='' />
+            <property name="tile1Link" type="String" label="Tile 1 Link" />
             <property
                 name="tile1LinkOpenInNewTab"
                 type="Boolean"
@@ -105,11 +101,7 @@
                 type="String"
                 label="Tile 2 Description"
                 default="Direction on your most asked questions." />
-            <property
-                name="tile2Link"
-                type="String"
-                label="Tile 2 Link"
-                default='' />
+            <property name="tile2Link" type="String" label="Tile 2 Link" />
             <property
                 name="tile2LinkOpenInNewTab"
                 type="Boolean"
@@ -152,11 +144,7 @@
                 type="String"
                 label="Tile 3 Description"
                 default="Software and firmware for configuring and programming your products." />
-            <property
-                name="tile3Link"
-                type="String"
-                label="Tile 3 Link"
-                default='' />
+            <property name="tile3Link" type="String" label="Tile 3 Link" />
             <property
                 name="tile3LinkOpenInNewTab"
                 type="Boolean"
@@ -199,11 +187,7 @@
                 type="String"
                 label="Tile 4 Description"
                 default="Logos, product images, product information, and customer photo sharing." />
-            <property
-                name="tile4Link"
-                type="String"
-                label="Tile 4 Link"
-                default='' />
+            <property name="tile4Link" type="String" label="Tile 4 Link" />
             <property
                 name="tile4LinkOpenInNewTab"
                 type="Boolean"
@@ -246,11 +230,7 @@
                 type="String"
                 label="Tile 5 Description"
                 default="Research articles proving the science." />
-            <property
-                name="tile5Link"
-                type="String"
-                label="Tile 5 Link"
-                default='' />
+            <property name="tile5Link" type="String" label="Tile 5 Link" />
             <property
                 name="tile5LinkOpenInNewTab"
                 type="Boolean"
@@ -293,11 +273,7 @@
                 type="String"
                 label="Tile 6 Description"
                 default="Select your product, follow the step-by-step process and generate a quote for your customized product." />
-            <property
-                name="tile6Link"
-                type="String"
-                label="Tile 6 Link"
-                default='' />
+            <property name="tile6Link" type="String" label="Tile 6 Link" />
             <property
                 name="tile6LinkOpenInNewTab"
                 type="Boolean"

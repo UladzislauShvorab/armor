@@ -84,6 +84,23 @@ export default class HomeTiles extends LightningElement {
             this.addCustomCssStyles();
         }
     }
+    get hasContent() {
+        for (let i = 1; i <= TILE_COUNT; i++) {
+            if (this[`showTile${i}`]) {
+                if (
+                    (this[`showTile${i}Image`] && this[`tile${i}Image`]) ||
+                    (this[`showTile${i}Title`] && this[`tile${i}Title`]) ||
+                    (this[`showTile${i}Description`] &&
+                        this[`tile${i}Description`]) ||
+                    this[`tile${i}Link`]
+                ) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
 
     get getNoImage() {
         return NO_IMAGE_PICTURE;
